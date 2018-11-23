@@ -7,7 +7,7 @@
       <div>
         <input type="text">
         <a href="" @click="onUpdate">Save</a>
-        <a href="" @click="onCancel">Save</a>
+        <a href="" @click="onCancel">Cancel</a>
       </div>
       <div>
         <a href="" @click="onEdit">Edit</a>

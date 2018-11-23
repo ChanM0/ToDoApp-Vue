@@ -7,6 +7,7 @@
           <router-link to="/new-quote">New Quote</router-link>
         </div>
       </div>
+      <hr>
       <div class="row">
         <div class="col-xs-12">
           <router-view></router-view>
@@ -17,7 +18,7 @@
 </template>
 
 <script>
-import NewQuote from "./componets/new-quote.vue";
+// import NewQuote from "./components/new-quote.vue";
 export default {
   name: "app",
   data() {
