@@ -37,10 +37,13 @@ export default {
       this.editing = false;
     },
     onDelete() {
+      const token = localStorage.getItem("token");
       this.$emit("quoteDeleted", this.qt.id);
       var path =
         "http://localhost:8888/ApplicationCreation/ToDoApp/public/api/quote/" +
-        this.qt.id;
+        this.qt.id +
+        "?token=" +
+        token;
       axios
         .delete(path)
         .then(respose => console.log(response))
@@ -49,9 +52,12 @@ export default {
     onUpdate() {
       this.editing = false;
       this.qt.content = this.editValue;
+      const token = localStorage.getItem("token");
       var path =
         "http://localhost:8888/ApplicationCreation/ToDoApp/public/api/quote/" +
-        this.qt.id;
+        this.qt.id +
+        "?token=" +
+        token;
       axios
         .put(path, {
           content: this.editValue

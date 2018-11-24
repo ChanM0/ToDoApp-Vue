@@ -26,8 +26,10 @@ export default {
   },
   methods: {
     onSubmitted() {
+      const token = localStorage.getItem("token");
       var path =
-        "http://localhost:8888/ApplicationCreation/ToDoApp/public/api/quote";
+        "http://localhost:8888/ApplicationCreation/ToDoApp/public/api/quote?token=" +
+        token;
       axios
         .post(path, { content: this.quoteContent })
         .then(response => console.log(response))

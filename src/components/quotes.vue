@@ -22,8 +22,10 @@ export default {
   },
   methods: {
     onGetQuotes() {
+      const token = localStorage.getItem("token");
       var path =
-        "http://localhost:8888/ApplicationCreation/ToDoApp/public/api/quotes";
+        "http://localhost:8888/ApplicationCreation/ToDoApp/public/api/quotes?token=" +
+        token;
       axios
         .get(path)
         .then(response => {
