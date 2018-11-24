@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 import App from "./App.vue";
 import Quotes from "./components/quotes.vue";
 import NewQuote from "./components/new-quote.vue";
+import SignUp from "./components/sign-up.vue";
 
 Vue.use(VueRouter);
 
@@ -15,6 +16,10 @@ const routes = [
   {
     path: "/new-quote",
     component: NewQuote
+  },
+  {
+    path: "/sign-up",
+    component: SignUp
   }
 ];
 
