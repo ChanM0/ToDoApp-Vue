@@ -44,7 +44,15 @@ export default {
             headers: { "X-Requested-With": "XMLHttpRequest" }
           }
         )
-        .then(response => console.log(response))
+        .then(response => {
+          console.log(response);
+          const token = response.data.token;
+          /** for decrypting the token  */
+          // const base64url = token.split(".")[1];
+          // const base64 = base64url.replace("-", "+").replace("_", "/");
+          // console.log(JSON.parse(window.atob(base64)));
+          localStorage.setItem("token", token);
+        })
         .catch(error => console.log(error));
     }
   }
