@@ -4,21 +4,67 @@
       {{ qt.content }}
     </div>
     <div class="pannel-footer">
-      <div>
+      <div v-if="editing">
         <input type="text">
-        <a href="" @click="onUpdate">Save</a>
-        <a href="" @click="onCancel">Cancel</a>
+        <a @click="onUpdate">Save</a>
+        <a @click="onCancel">Cancel</a>
       </div>
-      <div>
-        <a href="" @click="onEdit">Edit</a>
-        <a href="" @click="onDelete">Delete</a>
+      <div v-if="!editing">
+        <a @click="onEdit">Edit</a>
+        <a @click="onDelete">Delete</a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  props: ["qt"]
+  props: ["qt"],
+  data() {
+    return {
+      editing: false,
+      editValue: this.qt.content
+    };
+  },
+  methods: {
+    onEdit() {
+      this.editing = true;
+      this.editValue = this.qt.content;
+    },
+    onCancel() {
+      this.editing = false;
+    },
+    onDelete() {
+      this.$emit("quoteDeleted", this.qt.id);
+      var path =
+        "http://localhost:8888/ApplicationCreation/ToDoApp/public/api/quote/" +
+        this.qt.id;
+      axios
+        .delete(path)
+        .then(respose => console.log(response))
+        .catch(error => console.log(error));
+    },
+    onUpdate() {
+      this.editing = false;
+      this.qt.content = this.editValue;
+      var path =
+        "http://localhost:8888/ApplicationCreation/ToDoApp/public/api/quote/" +
+        this.qt.id;
+      axios
+        .put(path, {
+          content: this.editValue
+        })
+        .then(respose => console.log(response))
+        .catch(error => console.log(error));
+    }
+  }
 };
 </script>
+
+<style scoped>
+a {
+  cursor: pointer;
+}
+</style>
