@@ -6,6 +6,7 @@
           <router-link to="/">Quotes</router-link> | 
           <router-link to="/new-quote">New Quote</router-link> |
           <router-link to="/sign-up">Sign up</router-link> |
+          <router-link to="/sign-in">Sign In</router-link> |
         </div>
       </div>
       <hr>

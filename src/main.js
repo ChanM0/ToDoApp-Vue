@@ -5,6 +5,7 @@ import App from "./App.vue";
 import Quotes from "./components/quotes.vue";
 import NewQuote from "./components/new-quote.vue";
 import SignUp from "./components/sign-up.vue";
+import SignIn from "./components/sign-in.vue";
 
 Vue.use(VueRouter);
 
@@ -20,6 +21,10 @@ const routes = [
   {
     path: "/sign-up",
     component: SignUp
+  },
+  {
+    path: "/sign-in",
+    component: SignIn
   }
 ];
 
